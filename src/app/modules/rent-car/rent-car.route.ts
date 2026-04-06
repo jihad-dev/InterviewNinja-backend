@@ -13,7 +13,7 @@ router.patch('/:id/status', RentCarController.updateStatus);
 
 // Admin only
 router.post(
-    '/',
+    '/add-car',
     auth(['admin', 'superAdmin']),
     validateRequest(RentCarValidation.createRentCarSchema),
     RentCarController.createRentCar
