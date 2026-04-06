@@ -9,22 +9,16 @@ const router = Router();
 
 // Public
 router.get('/', RentCarController.getAllRentCars);
-router.get('/:id', RentCarController.getSingleRentCar);
-router.patch('/:id/status', RentCarController.updateStatus); // ইউজার status update
+router.patch('/:id/status', RentCarController.updateStatus);
 
 // Admin only
 router.post(
-    '/add-car',
+    '/',
     auth(['admin', 'superAdmin']),
     validateRequest(RentCarValidation.createRentCarSchema),
     RentCarController.createRentCar
 );
-router.patch(
-    '/:id',
-    auth(['admin', 'superAdmin']),
-    validateRequest(RentCarValidation.updateRentCarSchema),
-    RentCarController.updateRentCar
-);
+
 router.delete(
     '/:id',
     auth(['admin', 'superAdmin']),

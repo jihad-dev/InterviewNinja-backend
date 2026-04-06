@@ -7,31 +7,37 @@ export type TCarType =
   | 'truck'
   | 'bus'
   | 'cng'
-  | 'auto';
+  | 'auto'
+  | 'hiace'
+  | 'noah'
+  | 'ambulance';
 
 export type TCarStatus = 'available' | 'rented' | 'maintenance';
 
 export interface IRentCar {
-  // ── গাড়ির তথ্য ──
-  ownerName: string;        // মালিকের নাম
-  driverName?: string;      // চালকের নাম
-  carType: TCarType;        // গাড়ির ধরন
-  carModel?: string;        // গাড়ির মডেল
-  carNumber?: string;       // নম্বর প্লেট
+  // ── সার্ভিসের তথ্য ──
+  serviceName: string;       // বাঁশখালী কার এন্ড হাইস রেন্ট সার্ভিস
+  proprietorName: string;    // প্রোপাইটর: এনামুল হক
+  description: string;       // এখানে এসি নন এসি মাইক্রো...
 
-  // ── ভাড়ার তথ্য ──
-  rentPerDay?: number;      // প্রতিদিন ভাড়া
-  rentPerTrip?: number;     // প্রতি ট্রিপ ভাড়া
+  // ── গাড়ির ধরন ──
+  carTypes: TCarType[];      // ['microbus', 'car', 'hiace', 'noah']
 
-  // ── লোকেশন ──
-  area: string;             // এলাকা
-  upazila: string;          // উপজেলা
+  // ── সার্ভিস এলাকা ──
+  serviceArea: string;       // বাঁশখালী থেকে সমগ্র বাংলাদেশ
+  area: string;              // এলাকা
+  upazila: string;           // উপজেলা
 
   // ── যোগাযোগ ──
-  phone: string[];
+  phone: string[];           // কল করুন
+  whatsapp?: string;         // মেসেজ করুন (WhatsApp)
+
+  // ── ভাড়ার তথ্য ──
+  rentPerDay?: number;
+  rentPerTrip?: number;
 
   // ── স্ট্যাটাস ──
-  status: TCarStatus;       // available / rented / maintenance
+  status: TCarStatus;
 
   // ── সিস্টেম ──
   isDeleted: boolean;
